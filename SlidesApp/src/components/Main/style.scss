@@ -1,0 +1,90 @@
+@import 'styles/common';
+
+.container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.slide-container {
+    position: absolute;
+    @include definition(column, space-around, center);
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-size: 2rem;
+    background-color: rgba(140, 140, 140, .4); 
+
+    .intro-title {
+        @include definition(column, null, center);
+        font-size: 4rem !important;
+
+        div:nth-child(2) {
+            cursor: pointer;
+
+            &:hover {
+                color: lightgrey !important;
+            }
+        }
+    }
+
+    .body {
+        width: 60%;
+    }
+
+    .col-null-center {
+        @include definition(column, null, center);
+    }
+
+    .col-flex-s-center {
+        @include definition(column, flex-start, null);
+    }
+
+    .col-sb-center {
+        @include definition(column, space-between, center);
+    }
+
+    .row-sb-center {
+        @include definition(row, space-between, center);
+    }
+
+    .row-sa-center {
+        @include definition(row, space-around, center);
+    }
+
+    .w-40 {
+        width: 40%;
+    }
+
+    .w-50 {
+        width: 50%;
+    }
+
+    .w-60 {
+        width: 60%;
+    }
+
+    .w-70 {
+        width: 70%;
+    }
+
+    .w-80 {
+        width: 80%;
+    }
+
+    .w-90 {
+        width: 90%;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .font-1 {
+        font-size: 1rem !important;
+    }
+
+    .font-1-5 {
+        font-size: 1.5rem !important;
+    }
+}
