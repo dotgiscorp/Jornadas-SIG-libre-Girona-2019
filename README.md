@@ -1,10 +1,23 @@
 # Jornadas-SIG-libre-Girona-2019
-
+A step-by-step guide on how to develop the main target of this seminar => A web weather dashboard development
 
 ## Technologies
 - [RequireJS](https://requirejs.org/)
-- [Mapbox GL JS]()
-- [ChartJS]()
+- [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/api/)
+- [ChartJS](https://www.chartjs.org/)
+
+We're going to use RequireJS to load the JavaScript files, it's a framework to manage dependencies between JavaScript files, it will improve the speed and quality of the app. We'll write the full code in Vanilla, so we won't use compilers like Webpack; as long as we don't use any framework here, RequireJS is a great tool to work with.
+
+Using a maps library like Mapbox GL JS we get the whole WebGL power to render the maps, that's great!
+
+ChartJS is a simple library to create charts as html canvas, we'll feed the charts with the OpenWeather fetched data.
+
+---
+
+## Data
+The [OpenWeatherMap](https://openweathermap.org/) is a simple, fast and free weather API that brings you have access to current weather data. To start fetching data from there, you will'll need an [API key](https://openweathermap.org/appid#get)
+
+---
 
 ## Directory Structure
 
