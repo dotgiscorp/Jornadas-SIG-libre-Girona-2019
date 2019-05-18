@@ -175,4 +175,52 @@ header > div {
 }
 ```
 
+
+### Step x: Create charts
+- Let's create a [ES6 class](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Classes). We need to create 'n' charts from ChartJS, so make sense to create a class to manage it.
+```
+define('customChart', () => {
+    class customChart {
+        constructor(definition) {
+            this._chart = null;
+            this._canvas = definition.canvas;
+            this._type = definition.type;
+            this._labels = definition.labels;
+            this._label = definition.label;
+            this._data = definition.data;
+
+            this._startup();
+        }
+
+        _startup() {
+            this._chart = new Chart(document.querySelector(this._canvas).getContext('2d'), { 
+            type: this._type,
+            data: { 
+                labels: this._labels,
+                datasets: [{  
+                    label: this._label, 
+                    fill: false,
+                    backgroundColor: 'rgb(51, 173, 255)', 
+                    borderColor: 'rgb(0, 138, 230)', 
+                    borderWidth: 1,
+                    pointRadius: 2,
+                    data: this._data
+                }] 
+            }, 
+            options: {}
+           });
+        }
+
+        update(newData) {
+            this._chart.data.labels = newData.labels;
+            this._chart.data.datasets[0].data = newData.data;
+            this._chart.update();
+        }
+    }
+
+    return customChart;
+});
+
+```
+
 ---
