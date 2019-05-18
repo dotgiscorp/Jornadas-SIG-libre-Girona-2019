@@ -1,5 +1,5 @@
 # Jornadas-SIG-libre-Girona-2019
-A step-by-step guide on how to develop the main target of this seminar => A web weather dashboard development
+A step-by-step guide on how to develop the main target of this seminar => A web weather dashboard development ⛅️
 
 ## Technologies
 - [RequireJS](https://requirejs.org/)
@@ -57,6 +57,11 @@ The [OpenWeatherMap](https://openweathermap.org/) is a simple, fast and free wea
 </html>
 
 ```
+- Go to 'style.css' file and import the 'mapbox-gl.css' file
+
+```css
+@import 'mapbox-gl.css';
+```
 
 ### Step 2
 
@@ -78,11 +83,43 @@ define(() => {
 
 ### Step 3
 
-- Let's create a map! Main.js file is the default file that RequireJS starts to work with, we'll use it as main javascript file, so we need to import the different libraries we're going to use there.
+- Let's create a map! Main.js file is the default file that RequireJS starts to work with (we defined this in our app.js file, see below), we'll use it as main javascript file, so we need to import the different libraries we're going to use there. 
+
+```javascript
+requirejs.config({
+    baseUrl: 'lib',
+    paths: {
+        app: '../app'
+    }
+});
+
+requirejs(['app/main']);
+
+```
+- Create a html div with 'map' id (or whatever you wanna name the container map).
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href='styles/style.css' rel='stylesheet' />
+        <script data-main="app" src="lib/require.js"></script>
+    </head>
+    <body>
+        <div id='map'></div> //NEW!
+    </body>
+</html>
+```
+- Give some styles to the map, fixed to the whole screen
+```css
+#map {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+```
 - Start importing with 'require()' method all the stuff we need.
 - Set the Mapbox access token we just defined in our config file
 - Init the map; then we pass some properties to the Map object: 'container' (usually a html div, let's grab our 'map' id), 'style' (the .pbf tile use it as a basemap defined in our config) and center & zoom (defined in our config as well). 
-
 ```javascript
 define(require => {
     const mapboxgl = require('mapbox-gl');
