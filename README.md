@@ -178,7 +178,7 @@ header > div {
 
 ### Step x: Create charts
 - Let's create a [ES6 class](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Classes). We need to create 'n' charts from ChartJS, so make sense to create a class to manage it.
-```
+```javascript
 define('customChart', () => {
     class customChart {
         constructor(definition) {
