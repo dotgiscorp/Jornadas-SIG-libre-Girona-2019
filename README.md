@@ -31,6 +31,10 @@ The [OpenWeatherMap](https://openweathermap.org/) is a simple, fast and free wea
 │   ├── mapbox-gl.js
 │   └── require.js
 ├── styles
+│   ├── UI-elements
+│   │   ├── header.css
+│   │   ├── sidebar.css
+│   │   └── indicators.css 
 │   ├── style.css
 │   └── mapbox-gl.css 
 ├── app.js
@@ -41,7 +45,7 @@ The [OpenWeatherMap](https://openweathermap.org/) is a simple, fast and free wea
 
 ## Step by step app development 
 
-### Step 1
+### Step 1: Link RequireJS & the main stylesheet
 
 - Download the app simple structure and reference 'style.css' and 'require.js' on your index.html
 
@@ -63,7 +67,7 @@ The [OpenWeatherMap](https://openweathermap.org/) is a simple, fast and free wea
 @import 'mapbox-gl.css';
 ```
 
-### Step 2
+### Step 2: Set up the config file
 
 - We're going to use a config file, in order to keep there some map properties. 
 - Mapbox GL JS needs an access token to init, we use the public token provided for Mapbox. 
@@ -81,7 +85,7 @@ define(() => {
 });
 ```
 
-### Step 3
+### Step 3: Map appears! 👽
 
 - Let's create a map! Main.js file is the default file that RequireJS starts to work with (we defined this in our app.js file, see below), we'll use it as main javascript file, so we need to import the different libraries we're going to use there. 
 
@@ -137,6 +141,38 @@ define(require => {
     });
 });
 
+```
+
+### Step 4: UI element => Header
+- Add the 'header' html tab into your 'body' tag
+```html
+<header>
+    <div>Weather App ⛅️</div>
+    <div>Jornadas SIG libre Girona 2019</div>
+</header>
+```
+- Go to 'header.css' and set some styles 👨‍🎨
+```css
+header {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 3rem;
+    background-color: rgb(51, 102, 153);
+    color: white;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+header > div {
+    margin: 0 1rem 0 1rem;
+}
 ```
 
 ---
