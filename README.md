@@ -1,7 +1,7 @@
 # Jornadas-SIG-libre-Girona-2019
 A step-by-step guide on how to develop the main target of this seminar => A web weather dashboard development ⛅️
 
-<img src="./app-thumb.png" alt="App thumb">
+<img src="./app-thumb.png" alt="App thumb" style="border: 1px solid black">
 
 ## Technologies
 - [Axios](https://github.com/axios/axios)
