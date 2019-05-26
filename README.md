@@ -1,7 +1,7 @@
 # Jornadas-SIG-libre-Girona-2019
 A step-by-step guide on how to develop the main target of this seminar => A web weather dashboard development ⛅️
 
-<img src="./app-thumb.png" alt="App thumb" style="border: 1px solid black">
+<img src="./app-thumb.png" alt="App thumb">
 
 ## Technologies
 - [Axios](https://github.com/axios/axios)
@@ -309,7 +309,6 @@ header .header-items {
 - Let's create a [ES6 class](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Classes). We need to create 'n' charts from ChartJS, so make sense to create a class to manage it. A good practice is to comment and define what the class do, go to 'customChart.js', take a look and modify some default properties :tropical_fish:
 ```javascript
 define('customChart', () => {
-
     class customChart {
         constructor(definition) {
             this._chart = null;
@@ -540,8 +539,7 @@ define(require => {
 - 'getWeatherData' retrieves the data and update the whole app! :)
 
 ```javascript
-    define(require => {
-
+define(require => {
     const mapboxgl = require('mapbox-gl');
     const Chart = require('chart.min');
     const customChart = require('customChart');
