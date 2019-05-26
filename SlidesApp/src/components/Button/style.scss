@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .custom-button {
     position: absolute;
     background-color: transparent;
@@ -19,4 +20,27 @@
 
 .left {
     left: 1rem;
+=======
+.custom-button {
+    position: absolute;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 3rem;
+    height: 3rem;
+    top: 50%;
+    cursor: pointer;
+
+    &:hover {
+        background-color: lightgrey;
+    }
+}
+
+.right {
+    right: 1rem;
+}
+
+.left {
+    left: 1rem;
+>>>>>>> 4210225201de47e348b8171f1e55e35746374438
 }

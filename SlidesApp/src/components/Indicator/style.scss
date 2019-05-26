@@ -31,3 +31,38 @@
     background-color: transparent;
 }
 
+ 
+.indicator-container {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 1rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+
+    button {
+        width: 1rem; 
+        height: 1rem;
+        border-radius: 50%;
+        border: 2px solid white;
+        cursor: pointer;
+        margin-left: .25rem;
+        margin-right: .25rem;
+
+        &:hover {
+            background-color: lightgrey;
+        }
+    }
+}
+
+.button-selected {
+    background-color: lightgrey;
+}
+
+.button-unselected {
+    background-color: transparent;
+}
+
+>>>>>>> 4210225201de47e348b8171f1e55e35746374438
