@@ -52,6 +52,9 @@ The [OpenWeatherMap](https://openweathermap.org/) is a simple, fast and free wea
 ```html
 <!DOCTYPE html>
 <html>
+    <title>⛅️ Weather App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
     <head>
         <link href='styles/style.css' rel='stylesheet' />
         <script data-main="app" src="lib/require.js"></script>
@@ -175,11 +178,128 @@ header > div {
 }
 ```
 
+### Step 5: UI element => Sidebar
+- Let's create a div tag as a sidebar; put it in your 'body' tag. The sidebar will contains some indicators and the charts
+```html
+<div class='sidebar'>
+</div>
+```
+- Go to 'sidebar.css' and set some styles 👨‍🎨
+```css
+.sidebar {
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    top: 3rem;
+    left: 0;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    overflow-y: auto;
+    background-color: white;
+}
+```
 
-### Step x: Create charts
-- Let's create a [ES6 class](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Classes). We need to create 'n' charts from ChartJS, so make sense to create a class to manage it.
+### Step 6: Indicators
+- We decided to show in this example three weather indicators as a little panel: temperature, pressure and humidity. We will fetch the data from our Weather API later. Put the following html code into your 'sidebar' container:
+```html
+<div class='indicators-container'>
+    <div class='indicator'>
+        <div>Temperature</div>
+        <div class='indicator-value-container'>
+            <div id='temperature-indicator-value' class='indicator-value'>18</div>
+            <div>ºC</div>
+        </div>
+    </div>
+    <div class='indicator'>
+        <div>Humidity</div>
+        <div class='indicator-value-container'>
+            <div id='humidity-indicator-value' class='indicator-value'>51</div>
+            <div>%</div>
+        </div>
+    </div>
+    <div class='indicator'>
+        <div>Pressure</div>
+        <div class='indicator-value-container'>
+            <div id='pressure-indicator-value' class='indicator-value'>1032</div>
+            <div>Ha</div>
+        </div>
+    </div>
+</div>
+```
+- Go to 'indicators.css' and set some styles 👨‍🎨 Try to be creative here! This widget probably in the first thing that the user looks at, should be at least a bit impressive!
+```css
+.indicators-container {
+    margin-top: 10rem;
+}
+
+.indicators-container, .indicator {
+    font-size: .9rem;
+    color: rgb(68, 68, 68);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.indicator-value-container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: baseline;
+    align-items: baseline;
+    border-bottom: 1px solid black;
+}
+
+.indicator-value {
+    font-size: 3rem;
+    margin-right: .5rem;
+}
+```
+
+### Step 7: Create charts
+- Let's create a [ES6 class](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Classes). We need to create 'n' charts from ChartJS, so make sense to create a class to manage it. A good practice is to comment and define what the class do, go to 'customChart.js', take a look and modify some default properties :tropical_fish:
 ```javascript
 define('customChart', () => {
+    /**
+     * An object is used to create a --- customChart ---.
+     * 
+     * @typedef {Object} customChart
+     * @name customChart
+     */
+
+    /**
+    * Create a chart from ChartJS library 
+    *
+    *
+    * @param {Object} definition - The definition of a chart. This parameter must be an object.
+    *
+    * @example
+    * const chart = new customChart({
+    *   canvas: 'container',
+    *   type: 'line',
+    *   labels: [0, 1, 2],
+    *   label: 'Hello it's ChartJS!,
+    *   data: [10, 20, 15]
+    * });
+    *
+    * @constructor customChart
+    * @name customChart
+    * @property {String} canvas - The id of the target canvas
+    * @property {String} type - Type of chart
+    * @property {Array} labels - Labels to render
+    * @property {String} label - Chart title
+    * @property {Array} data - Data to render the chart
+    *
+    */
+
     class customChart {
         constructor(definition) {
             this._chart = null;
@@ -188,22 +308,26 @@ define('customChart', () => {
             this._labels = definition.labels;
             this._label = definition.label;
             this._data = definition.data;
+            this._backgroundColor = definition.backgroundColor;
+            this._borderColor = definition.borderColor;
+            this._borderWidth = definition.borderWidth || 1;
+            this._pointRadius = definition.pointRadius || 2;
 
             this._startup();
         }
 
         _startup() {
-            this._chart = new Chart(document.querySelector(this._canvas).getContext('2d'), { 
+            this._chart = new Chart(document.querySelector(`#${this._canvas}`).getContext('2d'), { 
             type: this._type,
             data: { 
                 labels: this._labels,
                 datasets: [{  
                     label: this._label, 
+                    backgroundColor: this._backgroundColor,
+                    borderColor: this._borderColor,
+                    borderWidth: this._borderWidth,
+                    pointRadius: this._pointRadius,
                     fill: false,
-                    backgroundColor: 'rgb(51, 173, 255)', 
-                    borderColor: 'rgb(0, 138, 230)', 
-                    borderWidth: 1,
-                    pointRadius: 2,
                     data: this._data
                 }] 
             }, 
@@ -221,6 +345,18 @@ define('customChart', () => {
     return customChart;
 });
 
+```
+- We will fetch the data from our Weather API later in order to fill the chart. Put the following html code into your 'sidebar' container, let's create three charts:
+```html
+<div>
+    <canvas id='temperature-container'></canvas>
+</div>
+<div>
+    <canvas id='humidity-container'></canvas>
+</div>
+<div>
+    <canvas id='pressure-container'></canvas>
+</div>
 ```
 
 ---
