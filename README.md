@@ -447,8 +447,21 @@ document.querySelector('#burger-node').addEventListener('click', e => {
     document.querySelector('#sidebar-node').classList.toggle('close');
 });
 ```
+### Step 10: Utils
+- Usually, in any web project, there are some utils files in order to process data or call methods: let's create four functions, 'fillIndicators', 'fillChart', 'flyTo' and 'getTargetCity'. We will use them later
 
-### Step 10: Weather API call 
+```javascript
+define(require => {  
+    return {
+        fillIndicator: (id, value) => document.querySelector(`#${id}-indicator-value`).innerHTML = value ? value.toString().replace('.',  ',') : 'No data',
+        fillChart: (instance, newData) => instance.update(newData),
+        flyTo: (mapInstance, coords) => mapInstance.flyTo({ center: [coords.lon, coords.lat] }),
+        getTargetCity: () => document.querySelector('#cityNode').value
+    }
+});
+```
+
+### Step 11: Weather API call 
 - Let's call out target data. Take a look at 'fetchData.js' file. We are importing our config file and some utils as object functions. - - First we define a 'fetchData' async function, this will retrieve the data. 
 - 'fetchAPIResponse' contains two conditions, depending on the request we wanna call, 'weather' or 'forecast' (API routes).
 - With 'URL' function we get the target url, then we call 'fethData' with this argument.
@@ -532,7 +545,7 @@ define(require => {
 });
 ```
 
-### Step 11: Fetching data & instanciating some stuff => Charts, Circle (Layer) 
+### Step 12: Fetching data & instanciating some stuff => Charts, Circle (Layer) 
 - Our final main.js file should look like the code below.
 - We instance 'customChart' (go to customChart.js and read the class description to get how to work with this custom object), then we set the instance as a new key in the config.js, this way we can access it from another file.
 - Once the map in loaded, the call 'Circle', in order to add the blinking circle layer.
