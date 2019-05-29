@@ -9,7 +9,7 @@ A step-by-step guide on how to develop the main target of this seminar => A web 
 - [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/api/)
 - [RequireJS](https://requirejs.org/)
 
-We're going to use RequireJS to load the JavaScript files, it's a framework to manage dependencies between JavaScript files, it will improve the speed and quality of the app. We'll write the full code in Vanilla, so we won't use compilers like Webpack; as long as we don't use any framework here, RequireJS is a great tool to work with.
+We're going to use RequireJS to load the JavaScript files, it's a framework to manage dependencies between JavaScript files, it will improve the speed and quality of the app. We'll write the full code in Vanilla, so we won't use compilers like Webpack; as long as we don't use any modern framework here like Vue or Angular, RequireJS is a great tool to work with.
 
 Using a maps library like Mapbox GL JS we get the whole WebGL power to render the maps, that's great!
 
