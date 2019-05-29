@@ -6,7 +6,6 @@ define(require => {
     const Circle = require('circle');
     const getWeatherData = require('./fetchData');
     const config = require('./config');
-    const state = require('./state');
     
     mapboxgl.accessToken = config.mapbox_token;
 
@@ -68,8 +67,8 @@ define(require => {
     })
     
     document.querySelector('#goToNode').addEventListener('click', () => {
-        getWeatherData('weather', state.targetCity());
-        getWeatherData('forecast', state.targetCity());
+        getWeatherData('weather', utils.getTargetCity());
+        getWeatherData('forecast', utils.getTargetCity());
     });
 
     document.querySelector('#burger-node').addEventListener('click', e => {
