@@ -448,7 +448,7 @@ document.querySelector('#burger-node').addEventListener('click', e => {
 });
 ```
 ### Step 10: Utils
-- Usually, in any web project, there are some utils files in order to process data or call methods: let's create four functions, 'fillIndicators', 'fillChart', 'flyTo' and 'getTargetCity'. We will use them later
+- Usually, in any web project, there are some utils files in order to process data or call methods: let's create four functions, 'fillIndicators', 'fillChart', 'flyTo' and 'getTargetCity'. We will use them later (Go to utils.js)
 
 ```javascript
 define(require => {  
